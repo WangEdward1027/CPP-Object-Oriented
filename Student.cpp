@@ -1,3 +1,6 @@
+//自定义学生类：包含学号（int _id）、身高（double _height）、姓名（char _name[20]）、成绩（double _score）信息，能够利用这个自定义类创建对象，并输出该对象的信息。
+//注意数据成员的声明顺序，考虑内存对齐
+
 #include <string.h>
 #include <iostream> 
 using std::cout;
@@ -6,17 +9,16 @@ using std::endl;
 //自定义类
 class Student{
 public:
-    Student():_id(1),_height(180),_name("Ed"),_score(100)
+    Student():_height(180),_name("Ed"),_id(1),_score(100)
     {
         cout << "Student()" << endl;
     }
 
-    Student(int id, double height, const char * name, double score)
-    :_id(id),_height(height), _score(score)
+    Student(double height, const char * name, int id, double score)
+    :_height(height), _id(id),_score(score)
     {
         cout << "Student(int id, double height, const char * name, double score)"  << endl;
         strcpy(_name, name);
-        _name[sizeof(_name) - 1] = '\0';  //确保C风格字符串以'\0'结尾
     }
 
     int getId(){
@@ -36,14 +38,14 @@ public:
     }
 
 private:
-    int _id;
+    //注意数据成员的声明顺序，考虑内存对齐
     double _height;
-    char _name[20];
+    char _name[20]; //有可能不够,有可能浪费
+    int _id;
     double _score;
 };
 
-int main()
-{
+void test0(){
     Student stu;
     
     int id = stu.getId();
@@ -60,7 +62,7 @@ int main()
     
     cout << "----------------------" << endl;
 
-    Student stu2(2, 182.0, "Edward", 140.5);
+    Student stu2(182.0, "Edward", 2,140.5);
     int id2 = stu2.getId();
     cout << "id2 = " << id2 << endl;
 
@@ -72,6 +74,17 @@ int main()
 
     double score2 = stu2.getScore();
     cout << "score2 = " << score2 << endl;
-    
+}
+
+void test1(){
+    Student stu;
+    cout << sizeof(stu) << endl;
+    /* cout << stu._id << endl; */
+}
+
+int main()
+{
+    /* test0(); */
+    test1();
     return 0;
 }
