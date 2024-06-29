@@ -64,7 +64,8 @@ void test0(){
     p1->print();
     p2->print();
     //delete p1; //析构被私有,无法delete
-    p1 = nullptr; //为什么置空了,还能调用destroy()??这不是对空指针解引用了吗？
+    p1 = nullptr; //自定义类的空指针,可以访问与对象无关的,如普通函数和静态成员。
+                  //虽然程序允许,但尽量不要这样写。
     p1->destroy();
     p2->destroy();
 }
