@@ -26,7 +26,7 @@ public:
         }
     }
 
-    void print(){
+    void print() const{  
         cout << "brand:" << _brand << endl;
         cout << "price:" << _price << endl;
     }
