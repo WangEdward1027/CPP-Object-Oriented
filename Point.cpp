@@ -26,7 +26,7 @@ public:
         cout << "Point(const Point &)" << endl;
     }
 
-    void print(){
+    void print() const{
         cout << "(" << _ix << "," << _iy << ")" << endl;
     }
 private:
