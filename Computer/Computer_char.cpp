@@ -11,6 +11,7 @@ using std::endl;
 class Computer
 {
 public:
+    //有参构造函数
     Computer(const char * brand, double price)
     : _brand(new char[strlen(brand) + 1]())
     , _price(price)
@@ -18,6 +19,19 @@ public:
         strcpy(_brand, brand);
     }
 
+    //赋值运算符函数 (类中有指针成员动态申请堆空间的情况)
+    Computer & operator= (const Cpmputer & rhs){
+	    cout << "赋值运算符函数" << endl;
+	    if(this != &rhs){	    //1.判断是否是自复制
+		    delete [] _brand;   //2.回收左操作数的数据成员原本管理的堆空间
+		    _brand = new char[strlen(rhs._brand) + 1]();  //3.深拷贝
+		    strcpy(_brand, rhs._brand);
+		    _price = rhs._price;   //以及其他的数据成员完成简单赋值
+	    }
+	    return *this;   //4.返回本对象
+    }
+
+    //析构函数
     ~Computer(){
         cout << "~Computer()" << endl;
         if(_brand){
