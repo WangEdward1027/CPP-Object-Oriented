@@ -1,4 +1,4 @@
-//Singleton_Computer_Heap.cpp
+//在堆区创建Computer类的单例对象
 //仿照Singleton_Point_Heap.cpp，照葫芦画瓢。
 //单例对象的数据成员申请堆空间。要妥善处理char * _brand。
 
