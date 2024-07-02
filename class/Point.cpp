@@ -8,7 +8,8 @@ using std::endl;
 class Point
 {
 public:
-    Point(int x, int y = 0) //默认参数
+    //explicit  //禁止隐式转换
+    Point(int x = 0, int y = 0) //默认参数
     :_ix(x)
     ,_iy(y)
     {
@@ -43,20 +44,29 @@ void test(){
 }
 
 void test1(){
-    Point pt(10,8);
-    cout << "-------------" << endl;
+    Point pt(3,4);
+    pt.print();
     
     Point pt2 = pt;
     pt2.print();
-    cout << "-------------" << endl;
 
     Point pt3(pt);
     pt3.print();
+
+    Point pt4(2);
+    pt4.print();
+
+    pt = {1,2}; //隐式转换
+    pt.print();
+
+    pt2 = 7;    //隐式转换
+    pt2.print();
 }
+
 
 int main()
 {
-    test();         
-    test1();         
+    /* test(); */         
+    test1();
     return 0;
 }
