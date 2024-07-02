@@ -9,22 +9,31 @@ class Point
 {
 public:
     //explicit  //禁止隐式转换
-    Point(int x = 0, int y = 0) //默认参数
+    //缺省构造函数
+    Point()
+    :_ix(0)
+    ,_iy(0)
+    {
+        cout << "Point()" << endl;
+    } 
+    
+    //有参构造函数
+    Point(int x , int y = 0) //默认参数
     :_ix(x)
     ,_iy(y)
     {
         cout << "Point(int,int)" << endl;
     }
-
-    ~Point(){
-        cout << "~Point()" << endl;
-    }
-
+    
     Point(const Point & rhs)
     :_ix(rhs._ix)
     ,_iy(rhs._iy)
     {
         cout << "Point(const Point &)" << endl;
+    }
+
+    ~Point(){
+        cout << "~Point()" << endl;
     }
 
     void print() const{
@@ -62,7 +71,6 @@ void test1(){
     pt2 = 7;    //隐式转换
     pt2.print();
 }
-
 
 int main()
 {
