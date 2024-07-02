@@ -1,4 +1,4 @@
-//在静态区创建单例对象
+//在静态区创建Point类的单例对象
 
 #include <iostream> 
 using std::cout;
