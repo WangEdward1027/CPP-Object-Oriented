@@ -11,10 +11,10 @@ class Computer
 {
 public:
     static Computer * getInstance(){
-        if(_pinstance == nullptr){
-            _pinstance = new Computer("ASUS", 8000);
+        if(_pInstance == nullptr){
+            _pInstance = new Computer("ASUS", 8000);
         }
-        return _pinstance;
+        return _pInstance;
     }
 
     void init(const char * brand, int price){
@@ -23,9 +23,9 @@ public:
     }
 
     static void destroy(){
-        if(_pinstance){
-            delete _pinstance;
-            _pinstance = nullptr; //安全回收
+        if(_pInstance){
+            delete _pInstance;
+            _pInstance = nullptr; //安全回收
             cout << "delete heap" << endl;
         }
     }
@@ -57,9 +57,9 @@ private:
 private:
     char * _brand;
     double _price;
-    static Computer * _pinstance;
+    static Computer * _pInstance;
 };
-Computer * Computer::_pinstance = nullptr;
+Computer * Computer::_pInstance = nullptr;
 
 void test(){
     /* Computer pc("apple", 20000); */ //不能调用私有的构造函数
