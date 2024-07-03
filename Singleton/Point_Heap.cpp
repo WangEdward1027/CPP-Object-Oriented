@@ -8,10 +8,10 @@ class Point
 {
 public:
     static Point * getInstance(){
-        if(_pinstance == nullptr){
-            _pinstance = new Point(1,2);
+        if(_pInstance == nullptr){
+            _pInstance = new Point(1,2);
         }
-        return _pinstance;
+        return _pInstance;
     }
     
     void init(int x, int y){
@@ -21,14 +21,14 @@ public:
 
     //定义为静态成员函数,则不需要创建对象也能通过类名调用
     static void destroy(){
-        if(_pinstance){
-            delete _pinstance;
-            _pinstance = nullptr; //安全回收
+        if(_pInstance){
+            delete _pInstance;
+            _pInstance = nullptr; //安全回收
             cout << " delete heap" << endl;
         }
     }
 
-    void print(){
+    void print() const{
         cout << "(" << _ix << "," << _iy << ")" << endl;
     }
 
@@ -52,9 +52,9 @@ private:
 private:
     int _ix = 10;
     int _iy = 10;
-    static Point * _pinstance;
+    static Point * _pInstance;
 };
-Point * Point::_pinstance = nullptr;
+Point * Point::_pInstance = nullptr;
 
 void test0(){
     Point * p1 = Point::getInstance();
@@ -64,8 +64,8 @@ void test0(){
     p1->print();
     p2->print();
     //delete p1; //析构被私有,无法delete
-    p1 = nullptr; //自定义类的空指针,可以访问与对象无关的,如普通函数和静态成员。
-                  //虽然程序允许,但尽量不要这样写。
+    p1 = nullptr; //为什么置空了,还能调用destroy()??这不是对空指针解引用了吗？
+    //海豹老师补充:自定义类的空指针,可以访问与对象无关的普通函数和静态成员
     p1->destroy();
     p2->destroy();
 }
