@@ -3,35 +3,46 @@
 
 #include <iostream> 
 using std::cout;
+using std::cin;
 using std::endl;
 
-class Point
-{
+class Point{
 public:
-    //explicit  //禁止隐式转换
-    //缺省构造函数
+    //无参构造
     Point()
     :_ix(0)
     ,_iy(0)
     {
         cout << "Point()" << endl;
-    } 
-    
-    //有参构造函数
-    Point(int x , int y = 0) //默认参数
+    }
+
+    //有参构造
+    //explicit //禁止隐式转换
+    Point(int x, int y = 0) //默认参数
     :_ix(x)
     ,_iy(y)
     {
-        cout << "Point(int,int)" << endl;
-    }
-    
-    Point(const Point & rhs)
-    :_ix(rhs._ix)
-    ,_iy(rhs._iy)
-    {
-        cout << "Point(const Point &)" << endl;
+        cout << "Point(int x, int y)" << " ("<< _ix << "," << _iy << ")" << endl;
     }
 
+    //拷贝构造
+    Point(const Point & rhs)
+    :_ix(rhs._ix) //只有构造函数才有初始化列表
+    ,_iy(rhs._iy) //无参构造、有参构造、拷贝构造
+    {
+        cout << "Point(const Point & pt)" << endl;
+    }
+    
+    //赋值运算符函数
+    Point& operator=(const Point & rhs)
+    {
+        cout << "Point& operator=(const Point & pt)" << endl;
+        _ix = rhs._ix;
+        _iy = rhs._iy;
+        return *this;
+    }
+
+    //析构函数
     ~Point(){
         cout << "~Point()" << endl;
     }
@@ -39,42 +50,40 @@ public:
     void print() const{
         cout << "(" << _ix << "," << _iy << ")" << endl;
     }
+
 private:
-    int _ix = 10;
-    int _iy = 10;
+    int _ix;
+    int _iy;
 };
 
 void test(){
-    int x = 1;
-    int y = x;  
-    int z(x);   //C++除了可以用=进行赋值,还可以用()进行赋值
-    cout << "y = " << y << endl;
-    cout << "z = " << z << endl;
-}
+    Point pt1;
+    pt1.print();
 
-void test1(){
-    Point pt(3,4);
-    pt.print();
-    
-    Point pt2 = pt;
+    Point pt2(3,4);
     pt2.print();
 
-    Point pt3(pt);
+    Point pt3 = pt2;
     pt3.print();
 
-    Point pt4(2);
-    pt4.print();
-
-    pt = {1,2}; //隐式转换
-    pt.print();
-
-    pt2 = 7;    //隐式转换
+    pt2 = pt1;
     pt2.print();
+}
+
+void test2(){
+    Point pt1 = {5,6}; //隐式转换。有参构造,右边当作初始化列表,右边不调用构造函数
+    pt1.print();
+
+    Point pt2 = 7;
+    pt2.print();
+
+    pt1 = 9;     //隐式转换。赋值运算符函数.右边调用有参构造函数,生成一个临时对象
+    pt1.print(); //赋值完成,该临时对象直接析构销毁。
 }
 
 int main()
 {
-    /* test(); */         
-    test1();
+    /* test(); */      
+    test2();      
     return 0;
 }
