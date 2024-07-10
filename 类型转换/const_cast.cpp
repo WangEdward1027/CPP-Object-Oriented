@@ -1,3 +1,5 @@
+//const_cast:去除const指针或const引用的const属性
+
 #include <iostream> 
 using std::cout;
 using std::cin;
