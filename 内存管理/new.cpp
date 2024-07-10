@@ -1,4 +1,5 @@
 //用new来申请int、char、int[]、char[]
+//注意delete,避免内存泄露
 
 #include <iostream> 
 #include <string.h>
@@ -32,6 +33,8 @@ void test2(){
     char* pc = new char();
     char* pc2 = new char('a');
     cout << *pc << endl << *pc2 << endl;
+    delete pc;
+    delete pc2;
 }
 
 //3.申请一个int型数组
@@ -42,12 +45,14 @@ void test3(){
         cout << A[i] << " ";
     }
     cout << endl;
+    delete [] A;
 
     int* B = new int[5]{1,2,3,4,5};
     for(int i = 0; i < 5; ++i){
         cout << B[i] << " ";
     }
     cout << endl;
+    delete [] B;
 }
 
 //4.申请一个char型数组
@@ -62,6 +67,7 @@ void test4(){
     char* pstr = new char[strlen(p) + 1]{'w','o','r','l','d'};
     //输出流运算符对char*有默认重载效果，会自动访问指针保存的地址上的内容
     cout << pstr << endl;
+    delete [] pstr;
 }
 
 int main()
