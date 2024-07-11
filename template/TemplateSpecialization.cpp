@@ -7,7 +7,7 @@ using std::cout;
 using std::endl;
 using std::string;
 
-//普通函数模板
+//通用函数模板
 template <class T>
 T add(T t1, T t2){
     return t1 + t2;
@@ -41,6 +41,9 @@ void test2(){
 
     //3.考虑只想隐式实例化,需要使用 特化模板
     cout << add(pstr1,pstr2) << endl; //还是test1中第一句,但是调用了特化模板,就能编译通过了
+    //4.使用特化模板,最好还是用<类型>显式写出
+    const char * p = add<const char *>("Hello,", "World!");
+    cout << p << endl;
 }
 
 int main()
