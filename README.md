@@ -12,4 +12,9 @@ Computer类 <br>
 
 3.单例模式 <br>
 
-4.友元 
+4.友元  <br>
+
+5.模板 template <br>
+
+6.内存管理
+ 
