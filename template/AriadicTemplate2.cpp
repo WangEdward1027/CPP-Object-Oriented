@@ -4,16 +4,15 @@
 using std::cout;
 using std::endl;
 
-// 基本函数，用于递归终止
-template<class T>
-T add(T value) {
-    return value;
+//普通函数,作为递归出口
+double add(){
+    return 0;
 }
 
 //可变参数模板函数，用于递归调用
 template<class T, class ...Args> //省略号写在参数包的左边,代表打包
-T add(T first, Args ...args) {
-    return first + add(args...); //省略号写在参数包的右边,代表解包
+/*T*/double add(T x, Args ...args) {
+    return x + add(args...); //省略号写在参数包的右边,代表解包
 }
 
 int main() {
