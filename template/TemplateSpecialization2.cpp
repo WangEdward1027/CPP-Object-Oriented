@@ -13,7 +13,7 @@ T add(T t1, T t2){
 
 //set<int>的特化模板
 template <>
-set<int> add(set<int> t1, set<int> t2){
+set<int> add<set<int>>(set<int> t1, set<int> t2){
     set<int> t3 = t1;
     t3.insert(t2.begin(), t2.end());
     return t3;
@@ -33,7 +33,7 @@ void test(){
     set<int> s1,s2;
     s1.insert({1,2,3,4});
     s2.insert({5,6,7,8});
-    set<int> s3 = add(s1,s2);
+    set<int> s3 = add<set<int>>(s1,s2);
     //遍历融合的set
     for(auto & ele: s3){
         cout << ele << " ";
