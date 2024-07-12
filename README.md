@@ -13,5 +13,10 @@ Student类、Point类、Computer类、栈类 <br>
 
 5.模板 template <br>
 
-6.内存管理
+6.内存管理 <br>
+
+7.移动语义 <br>
+
+8.智能指针
+
  
