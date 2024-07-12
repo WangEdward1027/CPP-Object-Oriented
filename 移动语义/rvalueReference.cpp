@@ -14,7 +14,7 @@ int func(){
 
 void test(){
     /* &func(); //没有名字的右值引用,是右值。不能取地址 */
-   int && ref = func(); //有名字的右值引用,是左值。可以取地址。
+   int && ref = func(); //有名字的右值引用,是左值。可以取地址
    cout << &ref << endl;
 }
 
