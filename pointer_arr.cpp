@@ -1,4 +1,4 @@
-//指针作为数组: int* p = arr;
+//指针作为数组
 
 #include <iostream> 
 using std::cout;
@@ -15,8 +15,16 @@ void test(){
     cout << endl;
 }
 
+//char** 指向 char * []
+void test2(){
+    char* arr[] = {"Hello", "Wordld", "C++"};
+    char **p = arr;
+    cout << p[0] << p[1] << p[2] << endl;
+}
+
 int main()
 {
     test();   
+    test2();   
     return 0;
 }
