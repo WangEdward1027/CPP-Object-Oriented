@@ -2,9 +2,12 @@
 
 #include <math.h>
 #include <iostream>
-
 using std::cout;
 using std::endl;
+
+//面向对象的设计原则
+//开放-闭合原则:对扩展开放,对修改关闭
+//抽象类,作为接口使用
 
 class Figure
 {
@@ -119,11 +122,12 @@ int main()
     Rectangle rectangle(10, 20);
     Circle circle(10);
     Triangle triangle(3, 4, 5);
-
     cout << endl;
+    
     func(rectangle);
     func(circle);
     func(triangle);
-
+    cout << endl;
+    
     return 0;
 }
