@@ -80,7 +80,16 @@ void test(){
     delete pbase;
 }
 
+void test2(){
+    //只创建一个派生类对象,观察基类和派生类的构造、析构顺序
+    Derived d;
+}
+
 int main(void){
     test();
+    
+    cout << endl;
+
+    test2();
     return 0;
 }
