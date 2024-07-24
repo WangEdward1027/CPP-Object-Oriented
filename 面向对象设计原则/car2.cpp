@@ -1,6 +1,7 @@
-//组合复用原则:车辆类、人类为两个基类
+//组合复用原则:
+//车辆类、人类为两个基类
 //单向关联:Person类中拥有Vehicle类的指针作为数据成员。
-//Person类的派生类对象可以与Vehicle类的派生类对象任意组合
+//Person类及其派生类的对象可以与Vehicle类的派生类对象任意组合
 
 #include <iostream>
 #include <memory>
@@ -46,8 +47,7 @@ public:
     }
 };
 
-//Person类中持有一个Vehicle的指针，并通过成员函数进行动态设置。
-//这种设计方式增强了灵活性，Person类可以与不同的Vehicle实例进行组合，减少了类之间的耦合
+//单向关联: Person类中持有一个Vehicle的指针，并通过成员函数进行动态设置。
 class Person
 {
 public:
@@ -61,7 +61,24 @@ public:
         _vehicle->run();
     }
 private:
-    Vehicle *_vehicle;
+    Vehicle *_vehicle; //聚合
+};
+
+class PersonA
+: public Person
+{
+
+};
+
+class PersonB
+: public Person
+{
+
+};
+class PersonC
+: public Person
+{
+
 };
 
 void test()
@@ -81,8 +98,29 @@ void test()
     person.drive();
 }
 
+//Person类及其派生类的对象,可以与Vehicle类的派生类对象任意自由组合
+void test2()
+{
+    unique_ptr<Vehicle> ModelX(new Tesla());
+    unique_ptr<Vehicle> X5(new BMW());
+    unique_ptr<Vehicle> S(new Benz());
+
+    PersonA pa;
+    pa.getVehicle(ModelX.get());
+    pa.drive();
+
+    PersonB pb;
+    pb.getVehicle(X5.get());
+    pb.drive();
+
+    PersonC pc;
+    pc.getVehicle(S.get());
+    pc.drive();
+}
+
 int main()
 {
-    test();
+    /* test(); */
+    test2();
     return 0;
 }
