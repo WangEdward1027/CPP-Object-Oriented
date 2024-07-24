@@ -1,11 +1,11 @@
 # Object-Oriented
 C++学习 <br>
 
-一、C++语法
+一、C++语法 <br>
 1.内存管理 <br>
 2.类型转换 <br>
 
-二、面向对象
+二、面向对象 <br>
 1.四种类： <br>
 Student类、Point类、Computer类、栈类 <br>
 
@@ -26,7 +26,7 @@ Student类、Point类、Computer类、栈类 <br>
 
 9.资源管理与智能指针 <br>
 
-三、面向对象设计
+三、面向对象设计 <br>
 1.面向对象的设计原则
 
 
